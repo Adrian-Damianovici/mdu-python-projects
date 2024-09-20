@@ -1,12 +1,20 @@
 import CalculatorServices as cs
 
 def addHistory(item, history):
+    '''
+    simple function for adding a new element to the history and removing the oldest element 
+    if the list lenght is larger than three elements
+    '''
     if len(history) >= 3:
         history.pop(0)
     history.append(item)
     
 
 def drawHistory(list):
+    '''
+    Function used for rendering the History section off the interface
+
+    '''
     if len(list) > 0:
         for i in list:
             print(i)
