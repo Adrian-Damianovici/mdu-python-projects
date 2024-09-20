@@ -1,22 +1,22 @@
 import os
 
-def clear():
+def clear(): #Clear  terminal
     os.system("cls")
 
-def formatNotation(number):
+def formatNotation(number): #reformat to e
     if len(str(number)) > 12:
         return "{:e}".format(number)
     else:
         return number
 
-def multiply(a, b):
+def multiply(a, b): #multiply a and b
     result = a * b
     
-    return formatNotation(result)
-def division(a, b):
+    return formatNotation(result) # format result
+def division(a, b): #divide a and b
     try:
        a/b
-    except ZeroDivisionError:
+    except ZeroDivisionError: 
         return "infinity"
     else:
         return formatNotation(a/b)
@@ -50,14 +50,15 @@ def selectOperation(userInput, a, b):
            return division(a, b)
         case _:
             print("Invalid operation")
-            
-def numberTypeCheck(number: str):
+        
+def numberTypeCheck(number: str):  
     if number.is_integer():
         return int(number)
     else:
         return number
 
 def FormatExpression(a, b, operation, result):
+    '''format expression in history'''
     sign = ""
     match operation:
         case "add":
