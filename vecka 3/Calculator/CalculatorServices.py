@@ -4,22 +4,25 @@ def clear(): #Clear  terminal
     os.system("cls")
 
 def formatNotation(number): #reformat to e
-    if len(str(number)) > 12:
+    print(number, type(number))
+    if len(str(number)) > 8:
+        print("Worked")
         return "{:e}".format(number)
     else:
+        print("KJGASGOASGIAHEO")
         return number
 
 def multiply(a, b): #multiply a and b
     result = a * b
     
-    return formatNotation(result) # format result
+    return (result) # format result
 def division(a, b): #divide a and b
     try:
-       a/b
+      result =  a/b
     except ZeroDivisionError: 
         return "infinity"
     else:
-        return formatNotation(a/b)
+        return formatNotation(result)
 def addition(a, b):
     return formatNotation(a + b)
 def subtraction(a, b):

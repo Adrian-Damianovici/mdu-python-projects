@@ -55,11 +55,12 @@ def main():
         a = cs.numberTypeCheck(a)
         b = cs.numberTypeCheck(b)
 
+
         result = cs.selectOperation(operation, a, b)
         if result != "infinity":
             result = cs.numberTypeCheck(float(result))
 
-        addHistory(cs.FormatExpression(a, b, operation, result), history)
+        addHistory(cs.FormatExpression(cs.formatNotation(a), cs.formatNotation(b), operation, cs.formatNotation(result)), history)
         cs.clear()
 
 if __name__ == "__main__":
