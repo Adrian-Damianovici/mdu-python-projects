@@ -1,20 +1,16 @@
 import os
+import todoServices as ts
 
-ToDos=[]
 
-print(".: Todo Manager :.")
-print("------------------")
-if len(ToDos)>0:        
-        for i in range(len(ToDos)):
-            print( ToDos[i])
-print("------------------")
-print("Type H for help...")
-print("------------------")
+ToDos = ts.load()
+def renderStart():
+    print("Type H for help...")
+    print("------------------")
 
 def checkOperation(operation):
     if operation=="A":
         newToDo=input("Todo: ")
-        ToDos.append(newToDo) 
+        ToDos.append((newToDo, False)) 
           
 def checkHop(operation):
     if operation =="H":
@@ -28,15 +24,19 @@ def render():
     print(".: Todo Manager :.")
     print("------------------")
     if len(ToDos)>0:        
-        for i in range(len(ToDos)):
-            print( ToDos[i])
+        for i in ToDos:
+            print(f"{ToDos.index(i)} [{"X" if i[1] else " "}] {i[0]} ")
     print("------------------")
 
 if __name__ == "__main__":
+   ts.clear()
+   render()
+   renderStart()
    while True:
 
     operation=input(">") 
-    os.system("cls")
-    checkOperation(operation)
+    ts.operationChecker(operation, ToDos)
+    ts.clear()
+    # checkOperation(operation)
     render() 
     checkHop(operation)

@@ -4,12 +4,9 @@ def clear(): #Clear  terminal
     os.system("cls")
 
 def formatNotation(number): #reformat to e
-    print(number, type(number))
     if len(str(number)) > 8:
-        print("Worked")
         return "{:e}".format(number)
     else:
-        print("KJGASGOASGIAHEO")
         return number
 
 def multiply(a, b): #multiply a and b
