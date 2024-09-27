@@ -1,6 +1,8 @@
 import os
 import json
 
+showHelp = False
+
 def save(list):
     with open("savefile.json", mode="w+") as saveFile:
      json.dump(list, saveFile)
@@ -24,7 +26,7 @@ def operationChecker(operation, list):
         case "d":
             deleteOperation(list)
         case "h":
-            helpOperation()
+            helpOperation(list)
         case "x":
             exitProgramOperation(list)
         case _:
@@ -38,19 +40,43 @@ def addOperation(list):
     list.append([newToDo, False])
 
 def deleteOperation(list):
-    index = int(input("Index: "))
-    list.pop(index)
+    try:
+        index = int(input("Index: "))
+        list.pop(index)
+    except (IndexError, ValueError):
+        print("ERROR: Invalid index")
+        print("------------------")
+        input("Press ENTER to continue...")
 def checkOperation(list):
-    index = int(input("index: "))
-    list[index][1] = True
+    try: 
+        index = int(input("index: "))
+        list[index][1] = True
+    except (IndexError, ValueError):
+        print("ERROR: Invalid index")
+        print("------------------")
+        input("Press ENTER to continue...")
+    
 
 def exitProgramOperation(list):
     save(list)
     print("TODOS Saved Successfuly...")
     exit()
 
-def helpOperation():
-    print("A | Add todo")
-    print("C | Check todo")
-    print("D | Delete todo")
-    print("X | Exit program")
+def helpOperation(list):
+    global showHelp
+    showHelp = True
+
+def render(list):
+    global showHelp
+    print(".: Todo Manager :.")
+    print("------------------")
+    if len(list)>0:        
+        for i in list:
+            print(f"{list.index(i)} [{"X" if i[1] else " "}] {i[0]} ")
+    print("------------------")
+    if showHelp:
+        print("A | Add todo")
+        print("C | Check todo")
+        print("D | Delete todo")
+        print("X | Exit program")
+        showHelp = False       
