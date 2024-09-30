@@ -5,11 +5,25 @@ showHelp = False
 
 def save(list):
     with open("savefile.json", mode="w") as saveFile:
-     json.dump(list, saveFile)
+        json.dump(list, saveFile)
 
 def load():
-    with open("savefile.json", mode="r") as saveFile:
-        return json.load(saveFile)
+    try:
+        with open("savefile.json", mode="r") as saveFile:
+            file = saveFile.read()
+            print(file)
+            if type(file) == None:
+                with open("savefile.json", mode="w") as saveFile:
+                    json.dump([], saveFile)
+                return load()
+            else:
+                return json.loads(file)
+
+    except FileNotFoundError:
+        with open("savefile.json", mode="w") as saveFile:
+            json.dump([], saveFile)
+        return load()
+
 
 def clear():
     if os.name == "nt":
