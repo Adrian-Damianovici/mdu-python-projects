@@ -4,7 +4,7 @@ import json
 showHelp = False
 
 def save(list):
-    with open("savefile.json", mode="w+") as saveFile:
+    with open("savefile.json", mode="w") as saveFile:
      json.dump(list, saveFile)
 
 def load():
@@ -73,6 +73,8 @@ def render(list):
     if len(list)>0:        
         for i in list:
             print(f"{list.index(i)} [{"X" if i[1] else " "}] {i[0]} ")
+    else:
+        print("Nothing to do!")
     print("------------------")
     if showHelp:
         print("A | Add todo")
