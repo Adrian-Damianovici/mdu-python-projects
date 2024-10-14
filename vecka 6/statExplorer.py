@@ -1,27 +1,26 @@
 import requests # type: ignore
 import json
-import math
 
 
 def getSeason(season):
-    r = requests.get("http://football-frenzy.s3-website.eu-north-1.amazonaws.com/api/"+season)
+    r = requests.get(f"http://football-frenzy.s3-website.eu-north-1.amazonaws.com/api/{season}")
     if r.status_code == 200:
         return json.loads(r.text)
     else:
-        print("season not found")
+        print("ERROR: season not found")
+        exit()
 
 def getGameday(season, day):
     r = requests.get(f"http://football-frenzy.s3-website.eu-north-1.amazonaws.com/api/{season}/{day}")
     if r.status_code == 200:
        return json.loads(r.text)
     else:
-        print("Gameday not found")
+        print("ERROR: Gameday not found")
+        exit()
 
 
 def getExactScore(season):
-       
-       
-   
+    season = int(input("Year: "))
     homeScore=int(input("Home score: "))
     awayScore=int(input("Away score: "))
     matches = []
@@ -52,11 +51,8 @@ def getExactScore(season):
     print(f"matching games {gameMatches} of 240 ({round((gameMatches/(len(gamedays)*8))*100,1)}%)")
 
 
-def getTotalGoals(season):          
-
-   
-   
-   
+def getTotalGoals():          
+    season = int(input("Year: "))
     matches = []
     seasonDict = getSeason(season)
     totalGoals = int(input("Total Goals: "))
@@ -87,7 +83,8 @@ def getTotalGoals(season):
     
 
 
-def getGoalsUnder(season):
+def getGoalsUnder():
+    season = int(input("Year: "))
     matches = []
     seasonDict = getSeason(season)
     totalGoals = int(input("Goals under: "))
@@ -134,14 +131,14 @@ if __name__=="__main__":
 
     operation = int(input(">"))
     print("-----------------")
-    season = input("Year: ")
+    
     match operation:
         case 1:
-            getExactScore(season)
+            getExactScore()
         case 2:
-            getTotalGoals(season)
+            getTotalGoals()
         case 3:
-            getGoalsUnder(season)
+            getGoalsUnder()
         case _:
             print("ERROR: Bad selection")
     print("-----------------")
