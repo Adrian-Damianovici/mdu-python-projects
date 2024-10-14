@@ -40,12 +40,12 @@ def getExactScore():
         if len(matchingGames) > 0:
             matches.append({"day": gamedayDict["date"], "games": matchingGames})
                 
-        for match in matches:
-            print(match["day"])
-            print("-------------------------------")
-            for game in match["games"]:
-                print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
-            print("\n\n")
+    for match in matches:
+        print(match["day"])
+        print("-------------------------------")
+        for game in match["games"]:
+            print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
+        print("\n\n")
         
     print("-----------------")
     print(f"matching games {gameMatches} of 240 ({round((gameMatches/(len(gamedays)*8))*100,1)}%)")
@@ -71,12 +71,12 @@ def getTotalGoals():
         if len(matchingGames) > 0:
             matches.append({"day": gamedayDict["date"], "games": matchingGames})
                 
-        for match in matches:
-            print(match["day"])
-            print("-------------------------------")
-            for game in match["games"]:
-                print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
-            print("\n\n")
+    for match in matches:
+        print(match["day"])
+        print("-------------------------------")
+        for game in match["games"]:
+            print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
+        print("\n\n")
         
     print("-----------------")
     print(f"matching games {gameMatches} of 240 ({round((gameMatches/(len(gamedays)*8))*100,1)}%)")
@@ -103,12 +103,12 @@ def getGoalsUnder():
         if len(matchingGames) > 0:
             matches.append({"day": gamedayDict["date"], "games": matchingGames})
                 
-        for match in matches:
-            print(match["day"])
-            print("-------------------------------")
-            for game in match["games"]:
-                print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
-            print("\n\n")
+    for match in matches:
+        print(match["day"])
+        print("-------------------------------")
+        for game in match["games"]:
+            print(f"{game["score"]["home"]["goals"]} - {game["score"]["away"]["goals"]} [{game["score"]["home"]["team"]} - {game["score"]["away"]["team"]}]")
+        print("\n\n")
         
     print("-----------------")
     print(f"matching games {gameMatches} of 240 ({round((gameMatches/(len(gamedays)*8))*100,1)}%)")
