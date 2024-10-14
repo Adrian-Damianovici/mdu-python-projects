@@ -19,7 +19,7 @@ def getGameday(season, day):
         exit()
 
 
-def getExactScore(season):
+def getExactScore():
     season = int(input("Year: "))
     homeScore=int(input("Home score: "))
     awayScore=int(input("Away score: "))
